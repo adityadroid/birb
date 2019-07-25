@@ -1,18 +1,21 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/post.dart';
 
 class PostItem extends StatelessWidget {
-  const PostItem({
-    Key key,
-  }) : super(key: key);
-
+  const PostItem(this.post);
+  final Post post;
   @override
   Widget build(BuildContext context) {
     return Card(
         child: Container(
-          height: 300.0,
-          child: const Center(
-            child: Text('Prim Birb'),
+          height: 100.0,
+          child: Center(
+            child: Row(
+              children: <Widget>[
+                Text(post.username)
+              ],
+            )
           ),
         )
     );

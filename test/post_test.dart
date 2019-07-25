@@ -1,19 +1,20 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter_app/models/post_mock.dart';
 import 'package:flutter_app/post.dart';
 import 'package:test/test.dart';
 
 void main(){
   group('Post',(){
     test('fromMap',() async {
-        final Post post = Post.fromMap(await postData());
-
-        expect(post.id, '7d3d8bd1-b9a6-4e1f-8e4e-dca6f4861441');
-        expect(post.imageUrl, 'https://source.unsplash.com/AEVAMhago-s');
-        expect(post.createdAt, DateTime.parse('2018-12-09T15:35:54.006Z'));
-        expect(post.text, '');
-        expect(post.username, 'woodstock');
+        final Map<String, dynamic> data = mockPostData(index: 5);
+        final Post  post = Post.fromMap(data);
+        expect(post.id, data['id']);
+        expect(post.imageUrl, data['imageUrl']);
+        expect(post.createdAt, DateTime.parse(data['createdAt']));
+        expect(post.text, data['text']);
+        expect(post.username, data['username']);
 
     });
   });

@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'no_content.dart';
+import 'post.dart';
 import 'posts_list.dart';
 
 void main(){
@@ -51,7 +54,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
        return Scaffold(
@@ -61,7 +63,19 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         elevation: 0.0,
       ),
-      body: const PostsList(),
+      body:  PostsList(loadPosts(context)),
     );
+  }
+
+  Stream<List<Post>> loadPosts(BuildContext context){
+    return DefaultAssetBundle.of(context)
+        .loadString('assets/posts.json')
+        .then<List<dynamic>>((String value)=>json.decode(value))
+        .asStream()
+        .map(convertToPosts);
+  }
+
+  List<Post> convertToPosts(List<dynamic> data) {
+    return data.map((dynamic item)=> Post.fromMap(item)).toList();
   }
 }
