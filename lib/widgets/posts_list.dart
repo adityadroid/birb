@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'no_content.dart';
-import 'post.dart';
+import 'package:Birb/widgets/no_content.dart';
+import 'package:Birb/models/post.dart';
 import 'post_item.dart';
 
 class PostsList extends StatelessWidget{

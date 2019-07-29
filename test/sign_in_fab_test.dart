@@ -1,6 +1,6 @@
 import 'package:Birb/services/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:Birb/sign_in_fab.dart';
+import 'package:Birb/widgets/sign_in_fab.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 

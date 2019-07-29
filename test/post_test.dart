@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:Birb/models/post_mock.dart';
-import 'package:Birb/post.dart';
+import 'mock/post_mock.dart';
+import 'package:Birb/models/post.dart';
 import 'package:test/test.dart';
 
 void main(){

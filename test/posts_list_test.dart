@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:Birb/models/post_mock.dart';
-import 'package:Birb/post.dart';
-import 'package:Birb/post_item.dart';
-import 'package:Birb/posts_list.dart';
+import 'mock/post_mock.dart';
+import 'package:Birb/models/post.dart';
+import 'package:Birb/widgets/post_item.dart';
+import 'package:Birb/widgets/posts_list.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:image_test_utils/image_test_utils.dart';
 

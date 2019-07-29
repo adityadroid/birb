@@ -1,7 +1,7 @@
 import 'package:faker/faker.dart';
 import 'package:uuid/uuid.dart';
 
-import '../post.dart';
+import 'package:Birb/models/post.dart';
 
 const List<String> imageIds = <String>[
   'AEVAMhago-s',

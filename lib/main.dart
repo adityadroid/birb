@@ -1,15 +1,9 @@
-import 'dart:convert';
 
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:Birb/ui/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
-import 'package:Birb/services/auth.dart';
-import 'no_content.dart';
-import 'post.dart';
-import 'posts_list.dart';
-import 'sign_in_fab.dart';
+import 'ui/register_page.dart';
 
 void main(){
   runApp(MyApp());
@@ -35,58 +29,11 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         accentColor: Colors.white
       ),
-      home: const MyHomePage(title: 'Birb'),
+      home: const HomePage(title: 'Birb'),
+      routes: <String, WidgetBuilder>{
+        RegisterPage.routeName: (BuildContext context) => const RegisterPage(),
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  GoogleSignIn googleSignIn = GoogleSignIn();
-  @override
-  Widget build(BuildContext context) {
-       return Scaffold(
-      appBar: AppBar(
-        title: Center(
-          child: Text(widget.title),
-        ),
-        elevation: 0.0,
-      ),
-      body:  PostsList(loadPosts(context)),
-      floatingActionButton: SignInFab(
-        auth: Auth(
-        firebaseAuth: FirebaseAuth.instance,
-        googleSignIn: GoogleSignIn(),
-      )));
-  }
-
-  Stream<List<Post>> loadPosts(BuildContext context){
-    return DefaultAssetBundle.of(context)
-        .loadString('assets/posts.json')
-        .then<List<dynamic>>((String value)=>json.decode(value))
-        .asStream()
-        .map(convertToPosts);
-  }
-
-  List<Post> convertToPosts(List<dynamic> data) {
-    return data.map((dynamic item)=> Post.fromMap(item)).toList();
-  }
-}

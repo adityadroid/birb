@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:Birb/post.dart';
+import 'package:Birb/models/post.dart';
 
 class PostItem extends StatelessWidget {
   const PostItem(this.post);
