@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'no_content.dart';
 import 'post.dart';
 import 'posts_list.dart';
+import 'sign_in_fab.dart';
 
 void main(){
   runApp(MyApp());
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         brightness: Brightness.light,
         primaryColor: Colors.white,
-        scaffoldBackgroundColor: Colors.white
+        scaffoldBackgroundColor: Colors.white,
+        accentColor: Colors.white
       ),
       home: const MyHomePage(title: 'Birb'),
     );
@@ -64,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
         elevation: 0.0,
       ),
       body:  PostsList(loadPosts(context)),
-    );
+      floatingActionButton: SignInFab());
   }
 
   Stream<List<Post>> loadPosts(BuildContext context){
