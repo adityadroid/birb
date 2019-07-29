@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "937513205716-tb8tmaug3jkoe5ach2dnoptbeoi696n6.apps.googleusercontent.com",
+          "client_id": "937513205716-b6t9jdchp31h6bd4pv0hbqpn1ip12gmk.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "app.birb",
-            "certificate_hash": "e508a37facfa6d61389f09e8c42ea6d80e57cc0b"
+            "certificate_hash": "b4d5c7f0ab0b4a6b95763fb35550e9cd7be57900"
           }
         },
         {

@@ -1,8 +1,11 @@
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
+import 'package:Birb/services/auth.dart';
 import 'no_content.dart';
 import 'post.dart';
 import 'posts_list.dart';
@@ -56,6 +59,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  GoogleSignIn googleSignIn = GoogleSignIn();
   @override
   Widget build(BuildContext context) {
        return Scaffold(
@@ -66,7 +71,11 @@ class _MyHomePageState extends State<MyHomePage> {
         elevation: 0.0,
       ),
       body:  PostsList(loadPosts(context)),
-      floatingActionButton: SignInFab());
+      floatingActionButton: SignInFab(
+        auth: Auth(
+        firebaseAuth: FirebaseAuth.instance,
+        googleSignIn: GoogleSignIn(),
+      )));
   }
 
   Stream<List<Post>> loadPosts(BuildContext context){

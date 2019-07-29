@@ -3,27 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import 'auth.dart';
+import 'package:Birb/services/auth.dart';
 
 class SignInFab extends StatelessWidget {
-  const SignInFab();
+  SignInFab({
+    @required this.auth
+  });
+  Auth auth;
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
         onPressed: signInWithGoogle,
         icon: Image.asset('assets/ic_g_login.png', height: 24),
-        label: Text('Sign in with Google'));
+        label:const Text('Sign in with Google'));
   }
 
 
   void signInWithGoogle() {
-    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-    GoogleSignIn googleSignIn = GoogleSignIn();
-    Auth auth = Auth(
-        firebaseAuth: firebaseAuth,
-        googleSignIn:  googleSignIn);
     auth.signInWithGoogle()
-    .then((user){
+    .then((FirebaseUser user){
       print('Hi ${user.displayName}');
     });
   }

@@ -18,7 +18,6 @@ class Auth{
       idToken: googleSignInAuthentication.idToken,
     );
     final AuthResult result = await firebaseAuth.signInWithCredential(credential);
-    //TODO: Add check
     final FirebaseUser currentUser = await firebaseAuth.currentUser();
     return currentUser;
   }
