@@ -36,7 +36,7 @@ class SignInFab extends StatelessWidget {
     Scaffold.of(context).showSnackBar(snackBar);
   }
 
-  bool isExistingUser(FirebaseUser user) {return false;}
+  bool isExistingUser(FirebaseUser user) {return true;}
   void navigateToRegister(BuildContext context){
     Navigator.pushNamed(context, RegisterPage.routeName);
   }
