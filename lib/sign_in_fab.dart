@@ -13,17 +13,21 @@ class SignInFab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
-        onPressed: signInWithGoogle,
+        onPressed: ()=>signInWithGoogle(context),
         icon: Image.asset('assets/ic_g_login.png', height: 24),
         label:const Text('Sign in with Google'));
   }
 
 
-  void signInWithGoogle() {
+  void signInWithGoogle(BuildContext context) {
     auth.signInWithGoogle()
     .then((FirebaseUser user){
-      print('Hi ${user.displayName}');
+      showSnackBar(context, user);
     });
   }
 
+  void showSnackBar(BuildContext context, FirebaseUser user) {
+    final SnackBar snackBar = SnackBar(content: Text('Welcome, ${user.displayName}'));
+    Scaffold.of(context).showSnackBar(snackBar);
+  }
 }
