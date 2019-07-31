@@ -1,3 +1,4 @@
+import 'package:Birb/widgets/register_form.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget{
@@ -11,8 +12,16 @@ class RegisterPageState extends State<RegisterPage>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Register'),centerTitle: true,elevation: 0.0),
-      body: Container(child: Center(child: const Text('Register')))
+      appBar: AppBar(
+          title: const Text('Register Page'),
+          centerTitle: true,
+          elevation: 0.0),
+      body: const SingleChildScrollView(
+        child: Padding(
+            padding: EdgeInsets.fromLTRB(16, 16, 16, 18),
+          child: RegisterForm()),
+      )
       ,);
   }
 }
+

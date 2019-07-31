@@ -3,6 +3,7 @@ import 'package:Birb/ui/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'theme.dart';
 import 'ui/register_page.dart';
 
 void main(){
@@ -22,13 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Birb',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        brightness: Brightness.light,
-        primaryColor: Colors.white,
-        scaffoldBackgroundColor: Colors.white,
-        accentColor: Colors.white
-      ),
+      theme: buildThemeData(),
       home: const HomePage(title: 'Birb'),
       routes: <String, WidgetBuilder>{
         RegisterPage.routeName: (BuildContext context) => const RegisterPage(),
